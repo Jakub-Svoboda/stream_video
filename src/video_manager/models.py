@@ -1,7 +1,7 @@
 from django.db import models
 
 class Video(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     shortName = models.CharField(max_length=255, blank=True)
     iconUri = models.URLField()
     manifestUri = models.URLField()

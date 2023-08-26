@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video List</title>
+</head>
+<body>
+    <h1>Video List</h1>
+    {% for video in videos %}
+    <p>
+        <div>
+        <p>{{ video.name }}</p>
+        <a href="{% url 'detail' video.id %}">
+            <img src="{{ video.iconUri }}" alt="Video Icon">
+        </a>
+        </div>
+    </p>
+    {% endfor %}
+</body>
+</html>

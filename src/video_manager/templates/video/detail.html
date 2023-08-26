@@ -1,0 +1,9 @@
+{% block content %}
+    <h2>{{ video.name }}</h2>
+    <div>
+        <img src="{{ video.iconUri }}" alt="Video Icon" loading="lazy">
+        <p>Short Name: {{ video.shortName }}</p>
+        <p>Source: {{ video.source }}</p>
+        <p>Description: {{ video.description }}</p>
+    </div>
+{% endblock %}

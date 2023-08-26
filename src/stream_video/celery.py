@@ -5,7 +5,7 @@ from datetime import timedelta
 from celery import Celery
 
 
-METADATA_PULL_PERIOD = 20 
+METADATA_PULL_PERIOD = 60
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stream_video.settings')
