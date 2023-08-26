@@ -10,7 +10,6 @@
     <!-- Header -->
     <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
         <h1 class="w3-xxlarge"><b>STREAM</b></span></h1>
-        </div>
     </header>
 
     <form method="get">
@@ -18,9 +17,15 @@
         <select name="sort" id="sort">
             <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>Ascending</option>
             <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>Descending</option>
-        </select>        
-        <button type="submit">Sort</button>
+        </select>
+        
+        <label for="search">Search videos:</label>
+        <input type="text" name="search" id="search" value="{{ search_query|default:'' }}">
+        <button type="submit">Apply</button>
     </form>
+
+    <p>Showing {{ videos|length }} videos</p>
+
     {% for video in videos %}
     <p>
         <div>
