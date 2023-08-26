@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Video List</title>
+    <title>{{ video.name }}</title>
     {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static 'video_manager/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'video_manager/w3.css' %}">
 </head>
-<body>
+<body class="w3-content w3-padding">
 {% block content %}
-    <h2>{{ video.name }}</h2>
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <h1 class="w3-xxlarge"><b>STREAM</b></span></h1>
+        </div>
+    </header>
+    <h2 class="w3-xlarge"><b>{{ video.name }}</b></span></h2>
     <div>
-        <img src="{{ video.iconUri }}" alt="Video Icon" loading="lazy">
+        <img src="{{ video.iconUri }}" alt="Video Icon">
         <p>Short Name: {{ video.shortName }}</p>
         <p>Source: {{ video.source }}</p>
         <p>Description: {{ video.description }}</p>

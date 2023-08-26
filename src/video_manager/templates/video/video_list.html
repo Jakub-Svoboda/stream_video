@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Video List</title>
+    <title>STREAM</title>
     {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static 'video_manager/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'video_manager/w3.css' %}">
 </head>
-<body>
-    <h1>Video List</h1>
+<body class="w3-content w3-padding">
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <h1 class="w3-xxlarge"><b>STREAM</b></span></h1>
+        </div>
+    </header>
+
     <form method="get">
         <label for="sort">Sort by name:</label>
         <select name="sort" id="sort">
