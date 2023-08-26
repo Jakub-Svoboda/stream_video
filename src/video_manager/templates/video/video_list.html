@@ -7,13 +7,21 @@
 </head>
 <body>
     <h1>Video List</h1>
+    <form method="get">
+        <label for="sort">Sort by name:</label>
+        <select name="sort" id="sort">
+            <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>Ascending</option>
+            <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>Descending</option>
+        </select>        
+        <button type="submit">Sort</button>
+    </form>
     {% for video in videos %}
     <p>
         <div>
-        <p>{{ video.name }}</p>
-        <a href="{% url 'detail' video.id %}">
-            <img src="{{ video.iconUri }}" alt="Video Icon">
-        </a>
+            <p>{{ video.name }}</p>
+            <a href="{% url 'detail' video.id %}">
+                <img src="{{ video.iconUri }}" alt="Video Icon">
+            </a>
         </div>
     </p>
     {% endfor %}

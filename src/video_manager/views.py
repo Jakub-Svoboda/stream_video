@@ -1,20 +1,23 @@
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
-from django.template import loader
+from django.db.models.functions import Lower 
+from django.shortcuts import get_object_or_404, render
 from .models import Video
 
 def index(request):
-    videos = Video.objects.all()
-    template = loader.get_template('video/video_list.html')
+    sort_order = request.GET.get('sort', 'asc')   
+    if sort_order == 'asc':
+        videos = Video.objects.all().order_by(Lower('name'))
+    else:
+        videos = Video.objects.all().order_by(Lower('name').desc())
+
     context = {
-        'videos': videos
+        'videos': videos,
+        'sort_order': sort_order
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'video/video_list.html', context)
 
 def detail(request, video_id):
     video = get_object_or_404(Video, pk=video_id)
-    template = loader.get_template('video/detail.html')
     context = {
         'video': video
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'video/detail.html', context)
