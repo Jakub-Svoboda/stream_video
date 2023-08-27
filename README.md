@@ -17,7 +17,24 @@ through and the results can be sorted.
 
 ## How to run
 * Have a docker engine set up and running
-* Use the following command to run:
+* Use the following commands to build and initialize:
 > docker-compose build
+
+> docker-compose up -d 
+
+> docker-compose exec django python manage.py migrate
+
+> docker-compose down 
+
+* Then use the following command to run:
 > docker-compose up
 * Use a browser to navigate to http://localhost:8000/ to browse the interface
+
+![Web page example image](img/web.png "Web page example image")
+
+
+## Testing
+* To run unit tests, run the following command:
+>  python src/manage.py test video_manager
+
+![Unit tests passing](img/unit_tests.png "Unit tests passing")
