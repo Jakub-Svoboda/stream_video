@@ -9,7 +9,6 @@ Email:  jakub.svoboda.developer@gmail.com
 import os
 
 from datetime import timedelta
-
 from celery import Celery
 
 

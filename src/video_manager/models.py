@@ -6,7 +6,9 @@ Date:   08/2023
 Email:  jakub.svoboda.developer@gmail.com
 """
 
+from django.core.validators import URLValidator
 from django.db import models
+
 
 class Video(models.Model):
     """
@@ -14,13 +16,13 @@ class Video(models.Model):
     """
     name = models.CharField(max_length=255, unique=True)
     shortName = models.CharField(max_length=255, blank=True)
-    iconUri = models.URLField()
-    manifestUri = models.URLField()
+    iconUri = models.URLField(validators=[URLValidator()])
+    manifestUri = models.URLField(validators=[URLValidator()])
     source = models.CharField(max_length=255)
     focus = models.BooleanField(default=False)
     disabled = models.BooleanField(default=False)
     extraText = models.JSONField(default=list)
-    certificateUri = models.URLField(null=True, blank=True)
+    certificateUri = models.URLField(null=True, blank=True, validators=[URLValidator()])
     description = models.TextField(null=True, blank=True)
     isFeatured = models.BooleanField(default=False)
     drm = models.JSONField(default=list)
@@ -31,7 +33,7 @@ class Video(models.Model):
     responseFilter = models.TextField(null=True, blank=True)
     clearKeys = models.JSONField(default=dict)
     extraConfig = models.JSONField(null=True, blank=True)
-    adTagUri = models.URLField(null=True, blank=True)
+    adTagUri = models.URLField(null=True, blank=True, validators=[URLValidator()])
     imaVideoId = models.CharField(max_length=255, null=True, blank=True)
     imaAssetKey = models.CharField(max_length=255, null=True, blank=True)
     imaContentSrcId = models.CharField(max_length=255, null=True, blank=True)

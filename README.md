@@ -18,4 +18,6 @@ through and the results can be sorted.
 ## How to run
 * Have a docker engine set up and running
 * Use the following command to run:
-> docker compose up --build
+> docker-compose build
+> docker-compose up
+* Use a browser to navigate to http://localhost:8000/ to browse the interface

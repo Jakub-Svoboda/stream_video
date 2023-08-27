@@ -30,7 +30,7 @@ def index(request):
         videos = videos.order_by(Lower('name').desc())
 
     if search_query:
-        videos = videos.filter(Q(name__icontains=search_query))
+        videos = videos.only('name').filter(Q(name__icontains=search_query))
 
     context = {
         'videos': videos,
