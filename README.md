@@ -1,5 +1,4 @@
-# stream_video
-A Django-based IPTV application 
+# Stream Video 
 
 ## Task (czech)
 Backend aplikace v Pythonu (framework Django)
@@ -10,3 +9,13 @@ Přehrávání !NENÍ! potřeba řešit, ale obrázek z iconUri by byl hezký
 Nejde o grafickou podobu a jestli budou barvičky ladit - to není úplně práce backendisty, tzn. nikdo neřešíme design. Důležité je, jak se zhostíte práce s parametry, filtrovanim a řazením.
 Vysledek bych rád viděl jako git repozitář s historií např. na githubu
 
+## Solution description
+The solution contains a Django-based project with an app for managing the video database. A Celery task
+is set up to periodically fetch video metadata from a remote source and store them in a local database.
+A simple frontend has been set up to display videos from the database. The list of videos can be searched
+through and the results can be sorted.
+
+## How to run
+* Have a docker engine set up and running
+* Use the following command to run:
+> docker compose up --build

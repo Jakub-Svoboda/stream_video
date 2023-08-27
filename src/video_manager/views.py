@@ -1,9 +1,24 @@
+"""
+Configures celery tasks for video_manager.
+
+Author: Jakub Svoboda
+Date:   08/2023
+Email:  jakub.svoboda.developer@gmail.com
+"""
+
 from django.db.models import Q
-from django.db.models.functions import Lower 
+from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, render
 from .models import Video
 
 def index(request):
+    """
+    View of the main page containing a list of videos.
+    Args:
+        request: passed request
+    Returns:
+        HttpResponse: rendered http response with filled context
+    """
     sort_order = request.GET.get('sort', 'asc')
     search_query = request.GET.get('search')
 
@@ -26,6 +41,14 @@ def index(request):
 
 
 def detail(request, video_id):
+    """
+    A view if a single video with detail (and TODO playback)
+    Args:
+        request: passed request
+        video_id (int): primary key of the database object
+    Returns:
+       HttpResponse: rendered http response with filled context
+    """
     video = get_object_or_404(Video, pk=video_id)
     context = {
         'video': video

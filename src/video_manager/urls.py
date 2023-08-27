@@ -1,3 +1,11 @@
+"""
+Configures URL mappping for the app.
+
+Author: Jakub Svoboda
+Date:   08/2023
+Email:  jakub.svoboda.developer@gmail.com
+"""
+
 from django.urls import path
 
 from . import views

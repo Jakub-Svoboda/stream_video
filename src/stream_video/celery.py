@@ -1,3 +1,11 @@
+"""
+Configures celery tasks for video_manager.
+
+Author: Jakub Svoboda
+Date:   08/2023
+Email:  jakub.svoboda.developer@gmail.com
+"""
+
 import os
 
 from datetime import timedelta

@@ -1,6 +1,17 @@
+"""
+Defines models of the video_manager app 
+
+Author: Jakub Svoboda
+Date:   08/2023
+Email:  jakub.svoboda.developer@gmail.com
+"""
+
 from django.db import models
 
 class Video(models.Model):
+    """
+    Represents a single video defined by its metadata
+    """
     name = models.CharField(max_length=255, unique=True)
     shortName = models.CharField(max_length=255, blank=True)
     iconUri = models.URLField()
