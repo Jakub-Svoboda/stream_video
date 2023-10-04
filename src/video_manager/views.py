@@ -11,7 +11,7 @@ from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets
 from .models import Video
-from .serializers import VideoSerializer
+from .serializers import VideoSerializer, VideoInputSerializer
 
 
 class VideoViewSet(viewsets.ModelViewSet):
@@ -20,13 +20,17 @@ class VideoViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = self.queryset
+        serializer = VideoInputSerializer(data=self.request.query_params)
+        serializer.is_valid(raise_exception=True)
+        name = serializer.validated_data.get('name')
+        if name:
+            queryset = queryset.filter(name__icontains=name)
 
-        name_filter = self.request.query_params.get('name')
-        if name_filter:
-            queryset = queryset.filter(name__icontains=name_filter)
+        disabled = serializer.validated_data.get('disabled')
+        if disabled is not None:
+            queryset = queryset.filter(disabled=disabled)
 
         return queryset
-
 
 
 def index(request):
