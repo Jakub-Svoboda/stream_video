@@ -9,7 +9,15 @@ Email:  jakub.svoboda.developer@gmail.com
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, render
+from rest_framework import viewsets
 from .models import Video
+from .serializers import VideoSerializer
+
+
+class VideoViewSet(viewsets.ModelViewSet):
+    queryset = Video.objects.all()
+    serializer_class = VideoSerializer
+
 
 def index(request):
     """
