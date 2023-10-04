@@ -18,6 +18,16 @@ class VideoViewSet(viewsets.ModelViewSet):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
 
+    def get_queryset(self):
+        queryset = self.queryset
+
+        name_filter = self.request.query_params.get('name')
+        if name_filter:
+            queryset = queryset.filter(name__icontains=name_filter)
+
+        return queryset
+
+
 
 def index(request):
     """
