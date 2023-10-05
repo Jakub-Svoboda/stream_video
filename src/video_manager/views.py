@@ -11,22 +11,22 @@ from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets
 from .models import Video
-from .serializers import VideoSerializer, VideoInputSerializer
+from .serializers import VideoSerializer, VideoInputSerializer, ValidateDataMixin
 
 
-class VideoViewSet(viewsets.ModelViewSet):
+class VideoViewSet(ValidateDataMixin, viewsets.ModelViewSet):
     queryset = Video.objects.all()
-    serializer_class = VideoSerializer
+    serializer_class_out = VideoSerializer
+    serializer_class_in = VideoInputSerializer
 
     def get_queryset(self):
         queryset = self.queryset
-        serializer = VideoInputSerializer(data=self.request.query_params)
-        serializer.is_valid(raise_exception=True)
-        name = serializer.validated_data.get('name')
+        validated_data = self.get_validate_data()
+        name = validated_data.get('name')
         if name:
             queryset = queryset.filter(name__icontains=name)
 
-        disabled = serializer.validated_data.get('disabled')
+        disabled = validated_data.get('disabled')
         if disabled is not None:
             queryset = queryset.filter(disabled=disabled)
 
